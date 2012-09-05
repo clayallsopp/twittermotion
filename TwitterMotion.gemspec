@@ -13,4 +13,8 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split($\)
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
+
+  s.add_dependency "bubble-wrap", ">= 1.1.2"
+  s.add_development_dependency 'geomotion'
+  s.add_development_dependency 'rake'
 end
