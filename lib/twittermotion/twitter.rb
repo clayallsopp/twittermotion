@@ -5,7 +5,7 @@ module Twitter
   end
 
   def account_type
-    self.account_store.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
+    @account_type ||= self.account_store.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
   end
 
   def accounts
@@ -15,12 +15,13 @@ module Twitter
   end
 
   def sign_in(&block)
+    @sign_in_callback = block
     self.account_store.requestAccessToAccountsWithType(self.account_type,
         withCompletionHandler:lambda { |granted, error|
       # Reset accounts
       @accounts = nil
       Dispatch::Queue.main.sync {
-        block.call(granted, error)
+        @sign_in_callback.call(granted, error)
       }
     })
   end

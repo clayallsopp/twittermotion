@@ -43,3 +43,12 @@ composer.compose(tweet: 'Hello RubyMotion!',
   ...
 end
 ```
+
+Grab a user's timeline:
+
+```ruby
+user.get_timeline do |hash, ns_error|
+  p "Timeline #{hash}"
+  # => [{\"coordinates\"=>nil, \"truncated\"=>false.....}, ....]
+end
+```
