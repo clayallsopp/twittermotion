@@ -33,3 +33,13 @@ Twitter.accounts[0].compose(tweet: 'Hello RubyMotion!',
   end
 end
 ```
+
+or without a user:
+
+```ruby
+composer = Twitter::Composer.new
+composer.compose(tweet: 'Hello RubyMotion!',
+  images: [ui_image], urls: ["http://clayallsopp.com"]) do |composer|
+  ...
+end
+```
