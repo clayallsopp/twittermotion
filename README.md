@@ -52,3 +52,13 @@ user.get_timeline do |hash, ns_error|
   # => [{\"coordinates\"=>nil, \"truncated\"=>false.....}, ....]
 end
 ```
+
+## Installation
+
+1. `gem install twittermotion`
+
+2. Add `require 'twittermotion'` to your `Rakefile`
+
+## Pull Requests
+
+It would be really cool if this was a fully-compatible Twitter API wrapper, so add whatever functionality you think helps!
