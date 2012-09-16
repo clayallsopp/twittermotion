@@ -16,6 +16,11 @@ module Twitter
       TWTweetComposeViewController.canSendTweet
     end
 
+    def self.compose(options = {}, &block)
+      @composer = Composer.new
+      @composer.compose(options, &block)
+    end
+
     attr_accessor :compose_controller
     attr_accessor :callback
     attr_accessor :error, :result
