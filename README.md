@@ -2,6 +2,14 @@
 
 ## Usage
 
+See Availability:
+
+```ruby
+if Twitter::Composer.available?
+  # Add tweet button etc
+end
+```
+
 Sign in:
 
 ```ruby
