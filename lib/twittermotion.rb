@@ -5,7 +5,6 @@ unless defined?(Motion::Project::Config)
 end
 
 require 'bubble-wrap'
-require 'geomotion'
 
 Motion::Project::App.setup do |app|
   Dir.glob(File.join(File.dirname(__FILE__), 'twittermotion/*.rb')).each do |file|
