@@ -9,9 +9,14 @@ module Twitter
   end
 
   def accounts
-    @accounts ||= self.account_store.accountsWithAccountType(account_type).collect do |ac_account|
-      Twitter::User.new(ac_account)
-    end
+    @accounts ||=
+      begin
+        if self.account_store.accountsWithAccountType(account_type)
+          self.account_store.accountsWithAccountType(account_type).collect do |ac_account|
+            Twitter::User.new(ac_account)
+          end
+        end
+      end
   end
 
   def sign_in(&block)
