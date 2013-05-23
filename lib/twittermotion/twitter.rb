@@ -9,7 +9,14 @@ module Twitter
   end
 
   def accounts
-    __memoized_accounts || []
+    @accounts ||=
+      begin
+        __acounts = self.account_store.accountsWithAccountType(account_type)
+        __acounts && __acounts.collect do |ac_account|
+          Twitter::User.new(ac_account)
+        end
+      end
+    @accounts || []
   end
 
   def sign_in(&block)
@@ -22,18 +29,6 @@ module Twitter
         @sign_in_callback.call(granted, error)
       }
     })
-  end
-
-  # private
-  def __memoized_accounts
-    @accounts ||=
-      begin
-        if self.account_store.accountsWithAccountType(account_type)
-          self.account_store.accountsWithAccountType(account_type).collect do |ac_account|
-            Twitter::User.new(ac_account)
-          end
-        end
-      end
   end
 
 end
