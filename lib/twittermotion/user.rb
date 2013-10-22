@@ -10,6 +10,10 @@ module Twitter
       self.ac_account.username
     end
 
+    def user_id
+      self.ac_account.valueForKeyPath("properties")["user_id"]
+    end
+
     # user.compose(tweet: 'initial tweet', images: [ui_image, ui_image],
     #   urls: ["http://", ns_url, ...]) do |composer|
     #
